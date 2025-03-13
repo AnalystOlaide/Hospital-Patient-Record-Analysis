@@ -1,81 +1,196 @@
-# Hospital-Patient-Record-Analysis
-# Hospital Patients Record Analysis Dashboard
 
-## Overview
-This dashboard provides insights into hospital patient records, including demographics, encounter types, insurance coverage, and medical conditions. It helps stakeholders analyze patient trends, costs, and healthcare service utilization.
+# **Hospital Patient Records Analysis Using Power BI**  
 
-## Key Metrics
-- **Patient Admissions:** 974
-- **Total Readmissions:** 854
-- **Average Length of Stay:** 0.30 days
-- **Average Cost Per Visit:** $3.64K
-- **Procedure Insurance Coverage:** $14K
+## **1. Project Overview**  
+This project analyzes synthetic patient data from Massachusetts General Hospital (2011-2022) to uncover trends in:  
+- Patient admissions and readmissions  
+- Hospital stays and associated costs  
+- Insurance coverage for medical procedures  
+- Common medical conditions and diagnoses  
 
-## Data Insights
+### **Dataset Overview**  
+The dataset includes five key tables:  
+- **Patients** – Demographic information (age, gender, ethnicity, marital status, etc.).  
+- **Encounters** – Hospital visits, associated costs, and payer details.  
+- **Procedures** – Medical procedures performed, along with costs and descriptions.  
+- **Payers** – Insurance provider details.  
+- **Organizations** – Information on hospitals/clinics.  
 
-### 1. Patient Demographics
-- **Gender Distribution:**
-  - Male: 49.28% (480)
-  - Female: 50.72% (494)
-- **Age Groups:**
-  - 1921-1940: 368 patients
-  - 1941-1960: 261 patients
-  - 1961-1980: 239 patients
-  - 1981-2000: 106 patients
-- **Race:**
-  - White: 69.82%
-  - Black: 16.74%
-  - Asian: 9.34%
-  - Other: 1.64%
-  - Native: 1.33%
-- **Ethnicity:**
-  - Hispanic: 80.39%
-  - Non-Hispanic: 19.61%
-- **Marital Status:**
-  - Single: 80.49%
-  - Married: 19.4%
-  - Unknown: 0.1%
+---
 
-### 2. Patient Encounters
-- **Encounter Class:**
-  - Ambulatory: 12.5K
-  - Outpatient: 6.3K
-  - Urgent Care: 3.7K
-  - Emergency: 2.3K
-  - Wellness: 1.9K
-  - Inpatient: 1.1K
-- **Top Encounter Descriptions:**
-  - Urgent care and general exams are most frequent
-  - Follow-up and telemedicine visits are also common
+## **2. Problem Statement**  
+Hospitals handle vast amounts of patient data, making it challenging to:  
+✅ Identify trends in **admissions and readmissions**.  
+✅ Assess the **average length of hospital stays**.  
+✅ Optimize **financial strategies** through cost analysis.  
+✅ Evaluate **insurance coverage** for medical procedures.  
 
-### 3. Insurance & Payment Coverage
-- **Top Insurance Providers:**
-  - Medicare: 19M
-  - Medicaid: 8M
-  - Blue Cross: 2M
-- **High Readmission Rates:**
-  - 854 out of 974 patients were readmitted, indicating potential care issues.
+A data-driven approach can **streamline hospital operations**, **improve patient outcomes**, and **enhance decision-making**.  
 
-### 4. Location Insights
-- **Top Cities Where Patients Live:**
-  - Boston: 541 patients
-  - Quincy: 80 patients
-  - Cambridge: 45 patients
-  - Other key locations: Revere, Chelsea, Weymouth
+---
 
-### 5. Medical Conditions
-- **Top Reason Codes:**
-  - Unknown: 19.5K (High missing data)
-  - Chronic conditions & hyperlipidemia are frequent diagnoses
-  - Sinusitis, asthma, and Alzheimer's also recorded
+## **3. Data Source**  
+The dataset was sourced from **Maven Analytics**, a platform for real-world analytics projects.  
 
-## Recommendations
-- **Address high readmission rates** by improving patient follow-up care.
-- **Enhance data quality** by reducing the unknown reason codes (19.5K entries).
-- **Expand telemedicine services** as a growing trend in healthcare.
-- **Analyze insurance coverage gaps** to ensure more patients receive adequate financial support.
+---
 
-## Conclusion
-This dashboard provides valuable insights into hospital operations, patient demographics, and financial trends. The analysis helps in strategic decision-making for better healthcare services.
+## **4. Methodology**  
 
+### **Tools Used**  
+- **Power BI** – Data visualization and dashboard creation.  
+- **Power Query** – Data cleaning and transformation.  
+- **DAX (Data Analysis Expressions)** – Custom calculations and key performance indicators (KPIs).  
+
+### **Data Processing Steps**  
+
+#### **1. Data Cleaning & Transformation**  
+✔ Handled missing values and duplicate records.  
+✔ Standardized date formats for consistency.  
+✔ Categorized records for better segmentation and insights.  
+
+#### **2. Data Modeling**  ![image](https://github.com/user-attachments/assets/059e5890-dfc8-463e-ae34-99cccd1b7aad)
+
+✔ Established relationships between **Patients, Encounters, Procedures, Payers, and Organizations** for seamless analysis.  
+
+#### **3. DAX Calculations**  
+✔ Created calculated columns and measures for key metrics, including:  
+  - **Length of Stay**  Avg_Length_of_Stay = 
+VAR TotalDays = SUMX(
+    encounters, 
+    DATEDIFF(encounters[Start], encounters[Stop], HOUR) / 24
+)
+VAR TotalEncounters = COUNT(encounters[Id])
+
+RETURN DIVIDE(TotalDays, TotalEncounters, 0)
+  - **Average Cost Per Visit**  Avg_Cost_Per_Visit = 
+VAR TotalCost = SUM(encounters[TOTAL_CLAIM_COST]) 
+VAR TotalVisits = COUNT(encounters[Id]) 
+
+RETURN DIVIDE(TotalCost, TotalVisits, 0)
+  - **Readmission Rates**  Total_Readmissions = 
+VAR ReadmittedPatients = 
+    SUMX (
+        VALUES(encounters[Patient]),  
+        IF ( 
+            CALCULATE ( COUNT(encounters[Id]), ALLEXCEPT(encounters, encounters[Patient]) ) > 1, 
+            1, 
+            0 
+        )
+    )
+RETURN
+    ReadmittedPatients
+
+  - **Patient Admission** Total_Readmissions = 
+VAR ReadmittedPatients = 
+    SUMX (
+        VALUES(encounters[Patient]),  
+        IF ( 
+            CALCULATE ( COUNT(encounters[Id]), ALLEXCEPT(encounters, encounters[Patient]) ) > 1, 
+            1, 
+            0 
+        )
+    )
+RETURN
+    ReadmittedPatients
+
+  - **Procedure Insurance Coverage** Procedure Insurance  coverage = CALCULATE(COUNT(encounters[Id]), encounters[PAYER_COVERAGE]>0)
+
+#### **4. Visualization & Dashboard Development**  ![image](https://github.com/user-attachments/assets/ffb5f5ff-1c64-4e2a-9ef1-82ae3edb3b4d) ![image](https://github.com/user-attachments/assets/71240052-2b16-456d-92ab-608489bd1642)
+
+
+✔ Designed **interactive reports** to highlight trends in:  
+  - **Admissions & Readmissions**  
+  - **Hospital Costs & Financial Insights**  
+  - **Insurance Coverage**  
+  - **Patient Demographics & Conditions**  
+✔ Used **charts, tables, and KPIs** to provide clear data insights.  
+
+---
+
+## **5. Key Insights**  
+
+### **1. Patient Admissions & Readmissions**  
+📌 **Total Admissions:** **974 patients**  
+📌 **Total Readmissions:** **854 patients**  
+📌 **Average Length of Stay:** **0.30 days**  
+📌 **Average Cost Per Visit:** **$3.64K**  
+
+### **2. Insurance Coverage**  
+📌 **Total Procedures Covered by Insurance:** **14K**  
+📌 **Highest Payment Coverage:** **Medicare ($19M total payments)**  
+
+### **3. Patient Demographics**  
+📌 **Gender Distribution:**  
+  - Male: **50.72%**  
+  - Female: **49.28%**  
+
+📌 **Age Distribution:**  
+  - **85-104 years**: **Largest group (368 patients)**  
+  - **25-44 years**: **Least represented (106 patients)**  
+
+📌 **Race & Ethnicity:**  
+  - **White:** **69.82%**  
+  - **Black:** **16.74%**  
+  - **Asian:** **9.34%**  
+  - **Hispanic Population:** **19.61%**  
+
+📌 **Marital Status:**  
+  - **Married:** **80.49%**  
+  - **Single:** **19.4%**  
+
+📌 **Top Patient Locations:**  
+  - **Boston** has the highest number of patients (**541**).  
+  - Quincy, Cambridge, Revere, and Chelsea follow.  
+
+### **4. Patient Encounters**  
+📌 **Encounter Types:**  
+  - **Ambulatory Visits:** **12.5K (Highest)**  
+  - **Inpatient Admissions:** **1.1K (Lowest)**  
+
+📌 **Most Common Encounter:** **"Encounter for problem procedure" (4.3K cases)**  
+
+### **5. Medical Conditions & Diagnosis**  
+📌 **Top Diagnosed Conditions:**  
+  - **Chronic Conditions:** **1.7K cases**  
+  - **Hyperlipidemia:** **1.6K cases**  
+  - **Normal Pregnancy:** **1.3K cases**  
+
+📌 **Least Reported Conditions:**  
+  - **Sinusitis & Asthma:** **Only 100 cases each**  
+
+📌 **Unknown Diagnoses:** **19.5K cases labeled as "Unknown"** → **Indicates poor data documentation**.  
+
+---
+
+## **6. Conclusion**  
+📌 The hospital **primarily serves elderly, White, and non-Hispanic patients**, with most being married.  
+📌 **Boston is the main patient hub**, followed by Quincy, Cambridge, and Revere.  
+📌 **Ambulatory services dominate**, while inpatient admissions are the least frequent.  
+📌 **Medicare is the top insurance provider** covering medical procedures.  
+📌 **Unknown reason codes** suggest **inconsistent documentation of diagnoses**.  
+📌 **Chronic conditions and hyperlipidemia** are among the most common diagnoses.  
+
+---
+
+## **7. Recommendations**  
+
+📌 **1. Improve Data Documentation**  
+- Reduce **"Unknown"** reason codes to enhance data quality and diagnosis tracking.  
+
+📌 **2. Optimize Ambulatory Services**  
+- Since **ambulatory visits dominate**, allocate more resources to **outpatient services**.  
+
+📌 **3. Strengthen Financial Strategy**  
+- With **Medicare covering the majority of payments**, **strategic partnerships** with government-backed insurance providers could improve revenue flow.  
+
+📌 **4. Enhance Geriatric Care**  
+- Given the **high number of elderly patients**, **invest in specialized geriatric units** for better care.  
+
+📌 **5. Implement Community Health Initiatives**  
+- Since most patients are in **Boston**, **targeted health campaigns** can reduce hospital visits through **preventive care programs**.  
+
+---
+
+## **Final Thoughts**  
+This analysis provides **valuable insights** into patient demographics, hospital encounters, and financial trends. By leveraging Power BI, hospitals can enhance **decision-making, resource allocation, and patient care strategies**.  
 
