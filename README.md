@@ -16,28 +16,19 @@ The dataset includes five key tables:
 - **Payers** – Insurance provider details.  
 - **Organizations** – Information on hospitals/clinics.  
 
----
-
-## **2. Problem Statement**  
+## **Problem Statement**  
 Hospitals handle vast amounts of patient data, making it challenging to:  
 ✅ Identify trends in **admissions and readmissions**.  
 ✅ Assess the **average length of hospital stays**.  
 ✅ Optimize **financial strategies** through cost analysis.  
 ✅ Evaluate **insurance coverage** for medical procedures.  
 
-
----
-
-## **3. Data Source**  
+## **Data Source**  
 The dataset was sourced from **Maven Analytics**, a platform for real-world analytics projects.  
 
----
-
-
-#### **4. Visualization & Dashboard Development**
+## **Visualization & Dashboard Development**
 
 ![image](https://github.com/user-attachments/assets/ffb5f5ff-1c64-4e2a-9ef1-82ae3edb3b4d) ![image](https://github.com/user-attachments/assets/71240052-2b16-456d-92ab-608489bd1642)
-
 
   -Designed **interactive reports** to highlight trends in:  
   - **Admissions & Readmissions**  
@@ -45,8 +36,6 @@ The dataset was sourced from **Maven Analytics**, a platform for real-world anal
   - **Insurance Coverage**  
   - **Patient Demographics & Conditions**  
  -Used **charts, tables, and KPIs** to provide clear data insights.  
-
----
 
 ## Key Insights
 
@@ -173,7 +162,8 @@ RETURN
 
   - **Procedure Insurance Coverage** Procedure Insurance  coverage = CALCULATE(COUNT(encounters[Id]), encounters[PAYER_COVERAGE]>0)
 
-## **Conclusion**  
+## **Conclusion** 
+
 📌 The hospital **primarily serves elderly, White, and non-Hispanic patients**, with most being married.  
 📌 **Boston is the main patient hub**, followed by Quincy, Cambridge, and Revere.  
 📌 **Ambulatory services dominate**, while inpatient admissions are the least frequent.  
