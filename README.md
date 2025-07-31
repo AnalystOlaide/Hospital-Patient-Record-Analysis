@@ -95,7 +95,9 @@ RETURN
 
   - **Procedure Insurance Coverage** Procedure Insurance  coverage = CALCULATE(COUNT(encounters[Id]), encounters[PAYER_COVERAGE]>0)
 
-#### **4. Visualization & Dashboard Development**  ![image](https://github.com/user-attachments/assets/ffb5f5ff-1c64-4e2a-9ef1-82ae3edb3b4d) ![image](https://github.com/user-attachments/assets/71240052-2b16-456d-92ab-608489bd1642)
+#### **4. Visualization & Dashboard Development**
+
+![image](https://github.com/user-attachments/assets/ffb5f5ff-1c64-4e2a-9ef1-82ae3edb3b4d) ![image](https://github.com/user-attachments/assets/71240052-2b16-456d-92ab-608489bd1642)
 
 
 ✔ Designed **interactive reports** to highlight trends in:  
@@ -107,62 +109,75 @@ RETURN
 
 ---
 
-## **5. Key Insights**  
+# Key Insights
 
-### **1. Patient Admissions & Readmissions**  
-📌 **Total Admissions:** **974 patients**  
-📌 **Total Readmissions:** **854 patients**  
-📌 **Average Length of Stay:** **0.30 days**  
-📌 **Average Cost Per Visit:** **$3.64K**  
+## Admissions & Readmissions: High Readmission Burden with Minimal Stay
 
-### **2. Insurance Coverage**  
-📌 **Total Procedures Covered by Insurance:** **14K**  
-📌 **Highest Payment Coverage:** **Medicare ($19M total payments)**  
+Out of **974 patients admitted**, a striking **854 were readmitted**, suggesting potential lapses in discharge planning or care continuity.  
+Despite the high volume of patient flow, the **average length of stay was only 0.30 days**, indicating quick turnover or low-acuity admissions.  
+Each visit, however, incurred an **average cost of $3.64K**, making even short stays financially significant.
 
-### **3. Patient Demographics**  
-📌 **Gender Distribution:**  
-  - Male: **50.72%**  
-  - Female: **49.28%**  
+## Insurance Coverage: Medicare Leads in Financial Responsibility
 
-📌 **Age Distribution:**  
-  - **85-104 years**: **Largest group (368 patients)**  
-  - **25-44 years**: **Least represented (106 patients)**  
+Out of **14,000 procedures covered by insurance**, **Medicare accounted for the highest total payments — $19M**.  
+This highlights Medicare as a dominant payer in the system and a key contributor to revenue, underlining the importance of maintaining compliance and outcome quality for this segment.
 
-📌 **Race & Ethnicity:**  
-  - **White:** **69.82%**  
-  - **Black:** **16.74%**  
-  - **Asian:** **9.34%**  
-  - **Hispanic Population:** **19.61%**  
+## Patient Demographics: Aging Population, Concentrated Geography
 
-📌 **Marital Status:**  
-  - **Married:** **80.49%**  
-  - **Single:** **19.4%**  
+The majority of patients were in the **85–104 age group (368 patients)**, while the **25–44 age group** represented the smallest segment (**106 patients**), showing a skew toward elderly care demand.  
+**White patients comprised 69.82%** of the total, followed by **Black (16.74%)**, **Asian (9.34%)**, and **Hispanic (19.61%)** populations.  
+Gender distribution was nearly even: **Male (50.72%)**, **Female (49.28%)**.  
+**Married patients made up 80.49%**, which may reflect access to caregiver support or family-based care decisions.  
+Geographically, **Boston alone contributed 541 patients**, significantly more than surrounding cities like Quincy, Cambridge, Revere, and Chelsea.
 
-📌 **Top Patient Locations:**  
-  - **Boston** has the highest number of patients (**541**).  
-  - Quincy, Cambridge, Revere, and Chelsea follow.  
+## Patient Encounters: Heavy Reliance on Outpatient Services
 
-### **4. Patient Encounters**  
-📌 **Encounter Types:**  
-  - **Ambulatory Visits:** **12.5K (Highest)**  
-  - **Inpatient Admissions:** **1.1K (Lowest)**  
+The healthcare system saw **12.5K ambulatory visits**, significantly higher than **1.1K inpatient admissions**, indicating that most care was delivered in an outpatient setting.  
+The most frequent encounter was **"Encounter for problem procedure" (4.3K cases)** — suggesting recurring complications or issues related to previous interventions that required follow-up care.
 
-📌 **Most Common Encounter:** **"Encounter for problem procedure" (4.3K cases)**  
+## Diagnoses & Conditions: Prevalence of Chronic Illness, Documentation Gaps
 
-### **5. Medical Conditions & Diagnosis**  
-📌 **Top Diagnosed Conditions:**  
-  - **Chronic Conditions:** **1.7K cases**  
-  - **Hyperlipidemia:** **1.6K cases**  
-  - **Normal Pregnancy:** **1.3K cases**  
+**Chronic conditions (1.7K cases)** and **hyperlipidemia (1.6K)** were the most commonly reported health issues, reflecting ongoing demand for long-term management.  
+**Normal pregnancy (1.3K)** also featured prominently, indicating consistent maternal care activity.  
+At the lower end, **sinusitis and asthma** were among the least recorded, with just **100 cases each**.  
+Notably, **19.5K diagnoses were labeled “Unknown”**, pointing to serious gaps in data capture and documentation, which can undermine decision-making, reporting accuracy, and operational planning.
 
-📌 **Least Reported Conditions:**  
-  - **Sinusitis & Asthma:** **Only 100 cases each**  
 
-📌 **Unknown Diagnoses:** **19.5K cases labeled as "Unknown"** → **Indicates poor data documentation**.  
+# Key Insights
 
----
+## Admissions & Readmissions: High Readmission Burden with Minimal Stay
 
-## **6. Conclusion**  
+Out of **974 patients admitted**, a striking **854 were readmitted**, suggesting potential lapses in discharge planning or care continuity.  
+Despite the high volume of patient flow, the **average length of stay was only 0.30 days**, indicating quick turnover or low-acuity admissions.  
+Each visit, however, incurred an **average cost of $3.64K**, making even short stays financially significant.
+
+## Insurance Coverage: Medicare Leads in Financial Responsibility
+
+Out of **14,000 procedures covered by insurance**, **Medicare accounted for the highest total payments — $19M**.  
+This highlights Medicare as a dominant payer in the system and a key contributor to revenue, underlining the importance of maintaining compliance and outcome quality for this segment.
+
+## Patient Demographics: Aging Population, Concentrated Geography
+
+The majority of patients were in the **85–104 age group (368 patients)**, while the **25–44 age group** represented the smallest segment (**106 patients**), showing a skew toward elderly care demand.  
+**White patients comprised 69.82%** of the total, followed by **Black (16.74%)**, **Asian (9.34%)**, and **Hispanic (19.61%)** populations.  
+Gender distribution was nearly even: **Male (50.72%)**, **Female (49.28%)**.  
+**Married patients made up 80.49%**, which may reflect access to caregiver support or family-based care decisions.  
+Geographically, **Boston alone contributed 541 patients**, significantly more than surrounding cities like Quincy, Cambridge, Revere, and Chelsea.
+
+## Patient Encounters: Heavy Reliance on Outpatient Services
+
+The healthcare system saw **12.5K ambulatory visits**, significantly higher than **1.1K inpatient admissions**, indicating that most care was delivered in an outpatient setting.  
+The most frequent encounter was **"Encounter for problem procedure" (4.3K cases)** — suggesting recurring complications or issues related to previous interventions that required follow-up care.
+
+## Diagnoses & Conditions: Prevalence of Chronic Illness, Documentation Gaps
+
+**Chronic conditions (1.7K cases)** and **hyperlipidemia (1.6K)** were the most commonly reported health issues, reflecting ongoing demand for long-term management.  
+**Normal pregnancy (1.3K)** also featured prominently, indicating consistent maternal care activity.  
+At the lower end, **sinusitis and asthma** were among the least recorded, with just **100 cases each**.  
+Notably, **19.5K diagnoses were labeled “Unknown”**, pointing to serious gaps in data capture and documentation, which can undermine decision-making, reporting accuracy, and operational planning.
+ 
+
+## **7. Conclusion**  
 📌 The hospital **primarily serves elderly, White, and non-Hispanic patients**, with most being married.  
 📌 **Boston is the main patient hub**, followed by Quincy, Cambridge, and Revere.  
 📌 **Ambulatory services dominate**, while inpatient admissions are the least frequent.  
@@ -170,26 +185,6 @@ RETURN
 📌 **Unknown reason codes** suggest **inconsistent documentation of diagnoses**.  
 📌 **Chronic conditions and hyperlipidemia** are among the most common diagnoses.  
 
----
-
-## **7. Recommendations**  
-
-📌 **1. Improve Data Documentation**  
-- Reduce **"Unknown"** reason codes to enhance data quality and diagnosis tracking.  
-
-📌 **2. Optimize Ambulatory Services**  
-- Since **ambulatory visits dominate**, allocate more resources to **outpatient services**.  
-
-📌 **3. Strengthen Financial Strategy**  
-- With **Medicare covering the majority of payments**, **strategic partnerships** with government-backed insurance providers could improve revenue flow.  
-
-📌 **4. Enhance Geriatric Care**  
-- Given the **high number of elderly patients**, **invest in specialized geriatric units** for better care.  
-
-📌 **5. Implement Community Health Initiatives**  
-- Since most patients are in **Boston**, **targeted health campaigns** can reduce hospital visits through **preventive care programs**.  
-
----
 
 ## **Final Thoughts**  
 This analysis provides **valuable insights** into patient demographics, hospital encounters, and financial trends. By leveraging Power BI, hospitals can enhance **decision-making, resource allocation, and patient care strategies**.  
